@@ -7,9 +7,12 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="Commands\" />
-    <Folder Include="Services\" />
-  </ItemGroup>
+	<ItemGroup>
+		<None Include="Resources\**\*.*">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<EmbeddedResource Include="Resources\**\*.*" />
+	</ItemGroup>
+
 
 </Project>

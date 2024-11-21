@@ -1,4 +1,5 @@
-﻿using System.Windows.Input;
+﻿using Scrapper.Interfaces;
+
 
 namespace Scrapper.Commands
 {
