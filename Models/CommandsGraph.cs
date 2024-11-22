@@ -2,7 +2,7 @@
 {
     internal class CommandsGraph
     {
-        public string Command { get; set; }
+
 
         public string Action { get; set; }
 

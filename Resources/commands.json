@@ -1,7 +1,7 @@
 {
   "scrape": {
-    "action": "Scrape",
-    "description": "Scrapes a specified url",
-    "flags": ["-h", "--help", "-u"]
+    "Action": "Scrape",
+    "Description": "Scrapes a specified url",
+    "Flags": ["-h", "--help", "-u"]
   }
 }
