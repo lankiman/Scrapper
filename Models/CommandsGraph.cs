@@ -8,7 +8,7 @@
 
         public string Description { get; set; }
 
-        public List<string> Flags { get; set; }
+        public HashSet<string> Flags { get; set; }
 
     }
 }

@@ -5,8 +5,12 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        var commandsDictionary = PoplulateDictionaries.Commands;
-        var flagsDictionary = PoplulateDictionaries.Flags;
+        var userInput = Console.ReadLine();
+        var test = new CommandFactory(userInput);
+
+        test.CreateCommand().Execute();
+
+        //Console.WriteLine(PoplulateDictionaries.Commands["scrape"].Action);
 
 
     }

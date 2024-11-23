@@ -3,11 +3,11 @@
 
 namespace Scrapper.Commands
 {
-    internal class Srape : ICommand
+    internal class Scrape : ICommand
     {
         public void Execute()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("this command has exectued");
         }
     }
 }
