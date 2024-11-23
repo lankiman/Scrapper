@@ -18,12 +18,7 @@ namespace Scrapper.Services
             Commands = JsonSerializer.Deserialize<Dictionary<string, CommandsGraph>>(commandsJson)!;
 
             Flags = JsonSerializer.Deserialize<Dictionary<string, string>>(flagsJson)!;
-
-
         }
-
-
     }
-
 }
 
