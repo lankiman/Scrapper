@@ -1,5 +1,6 @@
 ﻿using Scrapper.Interfaces;
 using Scrapper.Models;
+using System.Reflection;
 
 
 namespace Scrapper.Services
@@ -36,10 +37,10 @@ namespace Scrapper.Services
                 }
             }
 
-            var commandAction = _commands[commandName].Action;
-            string fullCommandName = $"Scrapper.Models.{commandAction}.cs";
 
-            Type? commandType = Type.GetType(fullCommandName);
+
+            Type? commandType = Assembly.GetExecutingAssembly()
+                              .GetType($"Scrapper.Commands.{_commands[commandName].Action}");
 
             var command = Activator.CreateInstance(commandType);
             return (ICommand)command!;

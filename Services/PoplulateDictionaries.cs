@@ -1,7 +1,9 @@
 ﻿
+
 using Scrapper.Models;
 using Scrapper.Utils;
 using System.Text.Json;
+
 
 namespace Scrapper.Services
 {
