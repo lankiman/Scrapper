@@ -10,7 +10,7 @@ namespace Scrapper.Services
     internal static class PoplulateDictionaries
     {
         public static IReadOnlyDictionary<string, CommandsGraph> Commands { get; private set; }
-        public static IReadOnlyDictionary<string, string> Flags { get; private set; }
+        public static IReadOnlyDictionary<string, FlagsGraph> Flags { get; private set; }
         static PoplulateDictionaries()
         {
 
@@ -19,7 +19,7 @@ namespace Scrapper.Services
 
             Commands = JsonSerializer.Deserialize<Dictionary<string, CommandsGraph>>(commandsJson)!;
 
-            Flags = JsonSerializer.Deserialize<Dictionary<string, string>>(flagsJson)!;
+            Flags = JsonSerializer.Deserialize<Dictionary<string, FlagsGraph>>(flagsJson)!;
         }
     }
 }

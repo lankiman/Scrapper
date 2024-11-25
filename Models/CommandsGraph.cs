@@ -8,12 +8,10 @@
 
         public HashSet<string> Flags { get; set; }
 
-        public bool RequiresArguments { get; set; }
-
         public int MinArgs { get; set; }
 
         public int MaxArgs { get; set; }
 
-        //public List<ArgumentsGraph> Arguments { get; set; }
+        public List<ArgumentsGraph> Arguments { get; set; }
     }
 }

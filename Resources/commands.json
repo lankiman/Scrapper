@@ -5,6 +5,13 @@
     "Flags": [ "-h", "--help" ],
     "RequiresArguments": true,
     "MinArgs": 1,
-    "MaxArgs": 1
+    "MaxArgs": 2,
+    "Arguments": [
+      {
+        "Name": "url",
+        "Type": "url",
+        "Required": true
+      }
+    ]
     }
-  }
+}
