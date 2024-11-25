@@ -2,6 +2,9 @@
   "scrape": {
     "Action": "Scrape",
     "Description": "Scrapes a specified url",
-    "Flags": ["-h", "--help", "-u"]
+    "Flags": [ "-h", "--help" ],
+    "RequiresArguments": true,
+    "MinArgs": 1,
+    "MaxArgs": 1
+    }
   }
-}

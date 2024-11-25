@@ -1,6 +1,12 @@
 {
-  "-h": "Display help for a specific Command or action",
-  "--version": "Shows Cli Version",
-  "-v": "Shows Cli Version",
-  "--help": "Display help for a specific Command or action"
+  "flags": {
+    "--help": {
+      "shortForm": "-h",
+      "description": "Display help for a specific Command or action"
+    },
+    "--version": {
+      "shortForm": "-v",
+      "description": "Shows Cli Version"
+    }
+  }
 }
