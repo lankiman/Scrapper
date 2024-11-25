@@ -6,9 +6,10 @@ internal class Program
     private static void Main(string[] args)
     {
         var userInput = Console.ReadLine();
-        var test = new CommandFactory(userInput);
 
-        test.CreateCommand().Execute();
+        var parsedCommand = new CommandParser([userInput]);
+
+        parsedCommand.Parse();
 
         //Console.WriteLine(PoplulateDictionaries.Commands["scrape"].Action);
 
