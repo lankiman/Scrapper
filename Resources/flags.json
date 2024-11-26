@@ -2,7 +2,7 @@
   "--help": {
      "Flag": "--help",
       "ShortForm": "-h",
-      "Description": "Display help for a specific Command or action"
+      "Description": "Display help information"
     },
    "--version": {
       "Flag": "--version",

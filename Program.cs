@@ -7,12 +7,12 @@ internal class Program
     {
         var userInput = Console.ReadLine();
 
-        var parsedCommand = new CommandParser([userInput]);
+        var parsedCommand = new CommandParser([userInput]).Parse();
 
-        parsedCommand.Parse();
-
-        //Console.WriteLine(PoplulateDictionaries.Commands["scrape"].Action);
-
-
+        if (parsedCommand != null)
+        {
+            var command = new CommandFactory(parsedCommand);
+            command.CreateCommand().Execute();
+        }
     }
 }
