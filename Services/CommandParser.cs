@@ -14,21 +14,20 @@ namespace Scrapper.Services
             {
                 var helpShower = new HelpShower();
                 helpShower.ShowGeneral();
+                Environment.Exit(0);
             }
 
-            if (command != "--help" || command != "-h")
-
+            if (!_commands.ContainsKey(command))
             {
-                if (!_commands.ContainsKey(command))
-                {
-                    throw new ArgumentException($"Invalid command: {command}, see scrapper --help for list of commands");
-                }
+                throw new ArgumentException($"Invalid command: {command}, see scrapper --help for list of commands");
             }
+
             return _commands[command];
         }
 
         private void ValidateFlags(CommandsGraph command, string[] flags)
         {
+
             var validFlags = command.Flags;
 
             foreach (var flag in flags)
@@ -38,6 +37,7 @@ namespace Scrapper.Services
                     throw new ArgumentException($"Invalid flag {flag} for command {command}, see command --help for list of available flags for command");
                 }
             }
+
         }
         private void ValidateArguments(CommandsGraph command, string[] arguments)
         {
@@ -86,7 +86,7 @@ namespace Scrapper.Services
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                Console.WriteLine("\n {0}", e.Message);
                 return null;
             }
         }

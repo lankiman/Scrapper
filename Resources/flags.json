@@ -2,11 +2,13 @@
   "--help": {
      "Flag": "--help",
       "ShortForm": "-h",
-      "Description": "Display help information"
-    },
+    "Description": "Display command line help",
+    "Class": "general"
+  },
    "--version": {
       "Flag": "--version",
       "ShortForm": "-v",
-      "Description": "Shows Cli Version"
-    }
+    "Description": "Shows  Cli version in use",
+      "Class": "general"
+   }
 }
