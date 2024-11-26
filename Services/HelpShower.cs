@@ -8,6 +8,8 @@ namespace Scrapper.Services
         private IReadOnlyDictionary<string, CommandsGraph> _commands = PoplulateDictionaries.Commands;
 
         private IReadOnlyDictionary<string, FlagsGraph> _flags = PoplulateDictionaries.Flags;
+
+        private readonly int _columnWidth = 18;
         public void ShowGeneral()
         {
             Console.WriteLine("\nUsage:scrapper [command] <options> argument\n");
@@ -15,18 +17,21 @@ namespace Scrapper.Services
 
             Console.WriteLine("Command Line Options:\n");
 
-            int longestFlag = _flags.Max(flag => (flag.Key + flag.Value.ShortForm).Length);
-
-            Console.WriteLine(longestFlag);
-
             foreach (var flag in _flags)
             {
                 if (flag.Value.Class == "general")
                 {
                     if (flag.Value.ShortForm != null)
                     {
-
-                        Console.WriteLine($"{flag.Key}|{flag.Value.ShortForm.PadRight(2)}  {flag.Value.Description,-10}");
+                        Console.Write($"{flag.Key}|{flag.Value.ShortForm}");
+                        Console.SetCursorPosition(_columnWidth, Console.CursorTop);
+                        Console.WriteLine(flag.Value.Description);
+                    }
+                    else
+                    {
+                        Console.Write($"{flag.Key}");
+                        Console.SetCursorPosition(_columnWidth, Console.CursorTop);
+                        Console.WriteLine(flag.Value.Description);
                     }
                 }
             }

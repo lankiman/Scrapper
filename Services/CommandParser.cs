@@ -86,7 +86,7 @@ namespace Scrapper.Services
             }
             catch (Exception e)
             {
-                Console.WriteLine("\n {0}", e.Message);
+                Console.WriteLine("\n{0}", e.Message);
                 return null;
             }
         }
