@@ -2,7 +2,7 @@
   "scrape": {
     "Action": "Scrape",
     "Description": "Scrapes a specified url",
-    "Flags": [ "-h", "--help" ],
+    "Flags": [],
     "RequiresArguments": true,
     "MinArgs": 1,
     "MaxArgs": 2,

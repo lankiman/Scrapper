@@ -14,7 +14,7 @@ namespace Scrapper.Services
             {
                 var helpShower = new HelpShower();
                 helpShower.ShowGeneral();
-                Environment.Exit(0);
+                throw new Errors.HelpRequestedException();
             }
 
             if (!_commands.ContainsKey(command))
@@ -83,6 +83,10 @@ namespace Scrapper.Services
                     Flags = flags,
                     Arguments = arguments
                 };
+            }
+            catch (Errors.HelpRequestedException e)
+            {
+                return null;
             }
             catch (Exception e)
             {

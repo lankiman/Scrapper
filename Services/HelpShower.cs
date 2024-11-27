@@ -36,6 +36,15 @@ namespace Scrapper.Services
                 }
             }
 
+            Console.WriteLine("\nAvailable Commands:\n");
+
+            foreach (var command in _commands)
+            {
+                Console.Write($"{command.Key}");
+                Console.SetCursorPosition(_columnWidth, Console.CursorTop);
+                Console.WriteLine(command.Value.Description);
+            }
+
         }
     }
 }
