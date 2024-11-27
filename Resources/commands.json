@@ -2,7 +2,7 @@
   "scrape": {
     "Action": "Scrape",
     "Description": "Scrapes a specified url",
-    "Flags": [],
+    "Flags": ["-h", "--help"],
     "RequiresArguments": true,
     "MinArgs": 1,
     "MaxArgs": 2,
@@ -10,6 +10,7 @@
       {
         "Name": "url",
         "Type": "url",
+        "Description": "url to be scraped",
         "Required": true
       }
     ]

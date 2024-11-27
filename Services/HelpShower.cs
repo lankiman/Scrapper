@@ -45,6 +45,27 @@ namespace Scrapper.Services
                 Console.WriteLine(command.Value.Description);
             }
 
+            Console.WriteLine("\nsee command --help for details about a specific command\n");
+
+        }
+
+        public void ShowSpecificCommandHelp(CommandsGraph command)
+        {
+            var requiredArguments = command.Arguments.Where(arg => arg.Required == true).Select(arg => arg.Name);
+
+            Console.WriteLine("Description:");
+            Console.WriteLine($"Scrapper {command.Action.ToLower()} command".PadRight(5));
+
+            Console.WriteLine("\nUsage:");
+            Console.WriteLine($"scrapper {command.Action.ToLower()} [options] <CommandArguments>".PadRight(5));
+
+            Console.WriteLine("\nInfo:");
+
+            Console.WriteLine($"{command.Action.ToLower()} takes a minimum of ${command.MinArgs} {(command.MinArgs < 2 ? "argument" : "arguments")}".PadRight(5));
+
+            Console.WriteLine($"{command.Action.ToLower()} takes a maximum of ${command.MinArgs} {(command.MaxArgs < 2 ? "argument" : "arguments")}".PadRight(5));
+
+            Console.WriteLine($"Required Arguments: {string.Join(",", requiredArguments)}");
         }
     }
 }
