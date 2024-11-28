@@ -4,7 +4,6 @@ namespace Scrapper.Services
 {
     internal class CommandParser(string[] arguments)
     {
-
         private IReadOnlyDictionary<string, CommandsGraph> _commands = PoplulateDictionaries.Commands;
 
         private CommandsGraph ValidateCommand(string command)
@@ -30,11 +29,19 @@ namespace Scrapper.Services
 
             var validFlags = command.Flags;
 
+            if (flags.Contains("-h") || flags.Contains("--help"))
+            {
+                var helpShower = new HelpShower();
+                helpShower.ShowSpecificCommandHelp(command);
+                throw new Errors.HelpRequestedException();
+
+            }
+
             foreach (var flag in flags)
             {
                 if (!validFlags.Contains(flag))
                 {
-                    throw new ArgumentException($"Invalid flag {flag} for command {command}, see command --help for list of available flags for command");
+                    throw new ArgumentException($"invalid option \"{flag}\" for command \"{command.Action.ToLower()}\", see \"{command.Action.ToLower()} --help\" for list of available options for command");
                 }
             }
 
@@ -61,12 +68,14 @@ namespace Scrapper.Services
             }
             try
             {
+
                 var command = ValidateCommand(arguments[0]);
 
                 var flags = arguments
                .Skip(1)
                .Where(arg => arg.StartsWith("-") || arg.StartsWith("--"))
                .ToArray();
+
 
                 var commandArguments = arguments
                 .Skip(1)

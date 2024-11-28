@@ -53,19 +53,32 @@ namespace Scrapper.Services
         {
             var requiredArguments = command.Arguments.Where(arg => arg.Required == true).Select(arg => arg.Name);
 
+            var longFormFlags = command.Flags.Where(flg => flg.StartsWith("--")).ToHashSet();
+
             Console.WriteLine("Description:");
-            Console.WriteLine($"Scrapper {command.Action.ToLower()} command".PadRight(5));
+            Console.WriteLine($"    Scrapper {command.Action.ToLower()} command");
 
             Console.WriteLine("\nUsage:");
-            Console.WriteLine($"scrapper {command.Action.ToLower()} [options] <CommandArguments>".PadRight(5));
+            Console.WriteLine($"    {command.Action.ToLower()} [options] <CommandArguments>");
 
             Console.WriteLine("\nInfo:");
 
-            Console.WriteLine($"{command.Action.ToLower()} takes a minimum of ${command.MinArgs} {(command.MinArgs < 2 ? "argument" : "arguments")}".PadRight(5));
+            Console.WriteLine($"    {command.Description}");
 
-            Console.WriteLine($"{command.Action.ToLower()} takes a maximum of ${command.MinArgs} {(command.MaxArgs < 2 ? "argument" : "arguments")}".PadRight(5));
+            Console.WriteLine($"    {command.Action.ToLower()} takes a minimum of {command.MinArgs} {(command.MinArgs < 2 ? "argument" : "arguments")}");
 
-            Console.WriteLine($"Required Arguments: {string.Join(",", requiredArguments)}");
+            Console.WriteLine($"    {command.Action.ToLower()} takes a maximum of {command.MinArgs} {(command.MaxArgs < 2 ? "argument" : "arguments")}");
+
+            Console.WriteLine($"\nRequired Arguments: {string.Join(",", requiredArguments)}");
+
+            Console.Write("\nOptions\n");
+            foreach (var flag in longFormFlags)
+            {
+                var flagDetails = _flags[flag];
+                Console.Write($"{flagDetails.Flag}  {flagDetails.ShortForm}");
+                Console.SetCursorPosition(_columnWidth, Console.CursorTop);
+                Console.WriteLine(flagDetails.Description);
+            }
         }
     }
 }
